@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Luisa Alzate</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			/*
+			.custom-container {
+				background: linear-gradient( #007dcf, #112c52);
+				height: 100vh;
+			}*/
+
+
+			.custom-container {
+				background: linear-gradient(-45deg, #002574, #112c52, #021b2c, #000101);
+				background-size: 400% 400%;
+				animation: gradient 10s ease infinite;
+				height: 100vh;
+			}
+
+			@keyframes gradient {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+
+			.webgl {
+				position: fixed;
+				top: 0;
+				left: 0;
+				outline: none;
+				z-index: 10;
+				opacity: .2;
+			}
+
+			/*
+
+			.webgl {
+				position: fixed;
+				top: 0;
+				left: 0;
+				outline: none;
+			}
+
+			.section {
+				display: flex;
+				align-items: center;
+				height: 100vh;
+				position: relative;
+				font-family: "Cabin", sans-serif;
+				color: #ffeded;
+				text-transform: uppercase;
+				font-size: 7vmin;
+				padding-left: 10%;
+				padding-right: 10%;
+			}
+
+			section:nth-child(odd) {
+				justify-content: flex-end;
+			}
+
+			.card {
+				position: fixed;
+				top: 150px;
+				left: 150px;
+				color: white;
+			}
+			.note::after {
+				content: "";
+				width: 20%;
+				height: 2px;
+				border-radius: 999px;
+				background-color: #afafaf;
+				background: white;
+				position: absolute;
+				top: -1.8em;
+				left: 0;
+			}
+			.note {
+				font-size: 20px;
+				color: white;
+				position: relative;
+				margin-top: 4em;
+				width: 600px;
+			}
+
+			h1 {
+				font-size: 120px;
+				font-family: "Poppins", sans-serif;
+				font-weight: 900;
+			}
+			.title-serifa {
+				font-family: "Spectral", sans-serif;
+				font-size: 70px;
+			}
+			.scroller {
+				height: 1.2em;
+				line-height: 1.2em;
+				position: relative;
+				overflow: hidden;
+				width: 10em;
+			}
+			.scroller > span {
+				position: absolute;
+				top: 0;
+				animation: slide 15s infinite cubic-bezier(0.17, 1.8, 0.82, 0.39);
+				font-weight: bold;
+			}
+			@keyframes slide {
+				0% {
+					top: 0;
+				}
+				25% {
+					top: -1.2em;
+				}
+				50% {
+					top: -2.4em;
+				}
+				75% {
+					top: -3.6em;
+				}
+			}
+
+			*/
+		</style>
+		<style>
+			#countdown {
+				height: 112px;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				opacity: .12;
+			}
+
+			#countdown #tiles {
+				position: relative;
+				z-index: 1;
+			}
+
+			#countdown #tiles > span {
+				width: 92px;
+				max-width: 92px;
+				font: bold 48px "Droid Sans", Arial, sans-serif;
+				text-align: center;
+				color: #CCAC5B;
+				border-radius: 3px;
+				margin: 0 7px;
+				padding: 18px 0;
+				display: inline-block;
+				position: relative;
+			}
+
+			#countdown .labels {
+				width: 100%;
+				height: 25px;
+				text-align: center;
+				position: absolute;
+				bottom: 8px;
+			}
+
+			#countdown .labels li {
+				width: 102px;
+				font: bold 15px "Droid Sans", Arial, sans-serif;
+				color: #CCAC5B;
+				text-align: center;
+				text-transform: uppercase;
+				display: inline-block;
+			}
+
+			.my-image {
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				opacity: .12;
+			}
+
+			.my-image2 {
+				width: 700px;
+				position: fixed;
+				top: 20vh;
+				left: 380px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="./fondo page.png" class="my-image">
+		<img src="./Proximamente.png" class="my-image2">
+		<div class="custom-container">
+			<canvas class="webgl"></canvas>
+		</div>
+		<div id="countdown">
+			<div id="tiles"></div>
+			<div class="labels">
+				<li>Days</li>
+				<li>Hours</li>
+				<li>Mins</li>
+				<li>Secs</li>
+			</div>
+		</div>
+		<!--
+		<div style="height: 3000px">
+			<div class="card">
+				<h1>
+					<span class="title-serifa">Óleo sobre lienzo</span>
+
+
+					<div class="scroller">
+						<span>
+							RETRATO<br />
+							ANIMALISMO<br />
+							PAISAJISMO<br />
+							HIPERREALISMO<br />
+							MURALES<br />
+							EXPOSICIONES<br />
+							DECORACIONES<br />
+							ASESORIAS<br />
+						</span>
+					</div>
+
+
+				</h1>
+				<p class="note">
+					Contrary to popular belief, Lorem Ipsum is not simply random text. It
+					has roots in a piece of classical Latin literature from 45 BC, making
+					it over 2000 years old. Richard McClintock, a Latin professor at
+					Hampden-Sydney.
+				</p>
+			</div>
+		</div>
+		--></body>
+
+	<script
+		async
+		src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
+	></script>
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "https://unpkg.com/three@0.118.1/build/three.module.js",
+				"three/examples/jsm/": "https://unpkg.com/three@0.118.1/examples/jsm/"
+			}
+		}
+	</script>
+	<!--
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+	-->
+	<script type="module">
+		import * as THREE from "three";
+		const parameters = {
+			materialColor: "#CCAC5B",
+		};
+
+		/**
+		 * Base
+		 */
+		// Canvas
+		const canvas = document.querySelector("canvas.webgl");
+
+		// Scene
+		const scene = new THREE.Scene();
+
+		const material = new THREE.MeshBasicMaterial({
+			color: parameters.materialColor,
+		});
+
+		const objectsDistance = 4;
+
+		/*
+		
+
+		const mesh1 = new THREE.Mesh(
+			new THREE.TorusGeometry(1, 0.01, 16, 60),
+			material
+		);
+		mesh1.position.y = -objectsDistance * 0;
+		mesh1.position.x = 2;
+
+		const mesh2 = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 32), material);
+		mesh2.position.y = -objectsDistance * 1;
+		mesh2.position.x = -2;
+
+		const mesh3 = new THREE.Mesh(
+			new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
+			material
+		);
+		mesh3.position.y = -objectsDistance * 2;
+		mesh3.position.x = 2;
+
+		scene.add(mesh1, mesh2, mesh3);
+
+		const sectionMeshes = [mesh1, mesh2, mesh3];
+		*/
+
+		//particles
+		const particlesCount = 4000;
+		const positions = new Float32Array(particlesCount * 3);
+
+		for (let i = 0; i < particlesCount; i++) {
+			positions[i * 3 + 0] = (Math.random() - 0.5) * 10;
+			positions[i * 3 + 1] =
+				objectsDistance * 0.5 - Math.random() * objectsDistance * 3;
+			positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+		}
+
+		const particlesGeometry = new THREE.BufferGeometry();
+		particlesGeometry.setAttribute(
+			"position",
+			new THREE.BufferAttribute(positions, 3)
+		);
+
+		const particlesMaterial = new THREE.PointsMaterial({
+			color: parameters.materialColor,
+			sizeAttenuation: true,
+			size: 0.03,
+		});
+
+		const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+		scene.add(particles);
+
+		/**
+		 * Lights
+		 */
+
+		const directionalLight = new THREE.DirectionalLight("#ffffff");
+		directionalLight.position.set(1, 1, 0);
+		scene.add(directionalLight);
+
+		/**
+		 * Sizes
+		 */
+		const sizes = {
+			width: window.innerWidth,
+			height: window.innerHeight,
+		};
+
+		window.addEventListener("resize", () => {
+			// Update sizes
+			sizes.width = window.innerWidth;
+			sizes.height = window.innerHeight;
+
+			// Update camera
+			camera.aspect = sizes.width / sizes.height;
+			camera.updateProjectionMatrix();
+
+			// Update renderer
+			renderer.setSize(sizes.width, sizes.height);
+			renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+		});
+
+		/**
+		 * Camera
+		 */
+		//group
+		const cameraGroup = new THREE.Group();
+		scene.add(cameraGroup);
+
+		// Base camera
+		const camera = new THREE.PerspectiveCamera(
+			35,
+			sizes.width / sizes.height,
+			0.1,
+			100
+		);
+		camera.position.z = 6;
+		cameraGroup.add(camera);
+
+		/**
+		 * Renderer
+		 */
+		const renderer = new THREE.WebGLRenderer({
+			canvas: canvas,
+			alpha: true, //so that the background of the canvas is transparent
+		});
+		renderer.setSize(sizes.width, sizes.height);
+		renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+		let scrollY = window.scrollY;
+		let currentSection = 0;
+
+		window.addEventListener("scroll", () => {
+			scrollY = window.scrollY;
+
+			const newSection = Math.round(scrollY / sizes.height);
+
+			if (newSection != currentSection) {
+				currentSection = newSection;
+
+				/*
+				gsap.to(sectionMeshes[currentSection].rotation, {
+					duration: 1.5,
+					ease: "power2.inOut",
+					x: "+=6",
+					y: "+=3",
+				});*/
+			}
+		});
+
+		const cursor = {};
+		cursor.x = 0;
+		cursor.y = 0;
+
+		window.addEventListener("mousemove", (event) => {
+			cursor.x = event.clientX / sizes.width - 0.5; //with this division we normalize depending on the viewport
+			cursor.y = event.clientY / sizes.height - 0.5;
+		});
+
+		/**
+		 * Animate
+		 */
+		const clock = new THREE.Clock();
+		let previousTime = 0;
+
+		const tick = () => {
+			const elapsedTime = clock.getElapsedTime();
+			const deltaTime = elapsedTime - previousTime;
+			previousTime = elapsedTime;
+
+			/*
+			for (const mesh of sectionMeshes) {
+				mesh.rotation.x += deltaTime * 0.1;
+				mesh.rotation.y += deltaTime * 0.12;
+			}*/
+
+			camera.position.y = (-scrollY / sizes.height) * objectsDistance;
+
+			const parallaxX = cursor.x * 0.5;
+			const parallaxY = -cursor.y * 0.5;
+			cameraGroup.position.x +=
+				(parallaxX - cameraGroup.position.x) * 5 * deltaTime;
+			cameraGroup.position.y +=
+				(parallaxY - cameraGroup.position.y) * 5 * deltaTime;
+
+			// Render
+			renderer.render(scene, camera);
+
+			// Call tick again on the next frame
+			window.requestAnimationFrame(tick);
+		};
+
+		tick();
+	</script>
+	<script>
+		//var target_date = new Date().getTime() + 1000 * 3600 * 48; // set the countdown date
+		var target_date = new Date("2023-06-24").getTime()
+		var days, hours, minutes, seconds; // variables for time units
+
+		var countdown = document.getElementById("tiles"); // get tag element
+
+		getCountdown();
+
+		setInterval(function () {
+			getCountdown();
+		}, 1000);
+
+		function getCountdown() {
+			// find the amount of "seconds" between now and target
+			var current_date = new Date().getTime();
+			var seconds_left = (target_date - current_date) / 1000;
+
+			days = pad(parseInt(seconds_left / 86400));
+			seconds_left = seconds_left % 86400;
+
+			hours = pad(parseInt(seconds_left / 3600));
+			seconds_left = seconds_left % 3600;
+
+			minutes = pad(parseInt(seconds_left / 60));
+			seconds = pad(parseInt(seconds_left % 60));
+
+			// format countdown string + set tag value
+			countdown.innerHTML =
+				"<span>" +
+				days +
+				"</span><span>" +
+				hours +
+				"</span><span>" +
+				minutes +
+				"</span><span>" +
+				seconds +
+				"</span>";
+		}
+
+		function pad(n) {
+			return (n < 10 ? "0" : "") + n;
+		}
+	</script>
+</html>
