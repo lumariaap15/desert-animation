@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Luisa Alzate</title>
 		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Dokdo&family=Sedgwick+Ave+Display&family=Walter+Turncoat&display=swap");
+
 			body {
 				margin: 0;
 				padding: 0;
@@ -16,11 +18,10 @@
 				height: 100vh;
 			}*/
 
-
 			.custom-container {
 				background: linear-gradient(-45deg, #002574, #112c52, #021b2c, #000101);
 				background-size: 400% 400%;
-				animation: gradient 10s ease infinite;
+				animation: gradient 5s ease infinite;
 				height: 100vh;
 			}
 
@@ -42,7 +43,7 @@
 				left: 0;
 				outline: none;
 				z-index: 10;
-				opacity: .2;
+				opacity: 0.5;
 			}
 
 			/*
@@ -140,11 +141,10 @@
 				height: 112px;
 				text-align: center;
 				position: absolute;
-				top: 0;
+				top: 300px;
 				bottom: 0;
 				left: 0;
 				right: 0;
-				opacity: .12;
 			}
 
 			#countdown #tiles {
@@ -155,9 +155,9 @@
 			#countdown #tiles > span {
 				width: 92px;
 				max-width: 92px;
-				font: bold 48px "Droid Sans", Arial, sans-serif;
+				font: bold 48px 'Sedgwick Ave Display', cursive;
 				text-align: center;
-				color: #CCAC5B;
+				color: #ccac5b;
 				border-radius: 3px;
 				margin: 0 7px;
 				padding: 18px 0;
@@ -171,15 +171,37 @@
 				text-align: center;
 				position: absolute;
 				bottom: 8px;
+				font-family: 'Sedgwick Ave Display', cursive;
+				background: linear-gradient(
+					to bottom,
+					#cfc09f 22%,
+					#cfc09f 26%,
+					#cfc09f 27%,
+					#ffecb3 40%,
+					#3a2c0f 78%
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-transform: uppercase;
 			}
 
 			#countdown .labels li {
 				width: 102px;
-				font: bold 15px "Droid Sans", Arial, sans-serif;
-				color: #CCAC5B;
+				font: bold 15px 'Sedgwick Ave Display', cursive;
+				color: #ccac5b;
 				text-align: center;
 				text-transform: uppercase;
 				display: inline-block;
+				background: linear-gradient(
+					to bottom,
+					#cfc09f 22%,
+					#cfc09f 26%,
+					#cfc09f 27%,
+					#ffecb3 40%,
+					#3a2c0f 78%
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
 			}
 
 			.my-image {
@@ -188,7 +210,8 @@
 				position: fixed;
 				top: 0;
 				left: 0;
-				opacity: .12;
+				opacity: 0.6;
+				filter: blur(2px) hue-rotate(20deg) saturate(1.2);
 			}
 
 			.my-image2 {
@@ -197,11 +220,47 @@
 				top: 20vh;
 				left: 380px;
 			}
+
+			.my-title {
+				/*font-family: "Walter Turncoat", cursive;*/
+				font-family: 'Sedgwick Ave Display', cursive;
+				font-size: 200px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -70%);
+				background: linear-gradient(
+					to bottom,
+					#cfc09f 22%,
+					#cfc09f 26%,
+					#cfc09f 27%,
+					#ffecb3 40%,
+					#3a2c0f 78%
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				text-transform: uppercase;
+				margin: 0;
+				opacity: .12;
+			}
+
+			.my-title:after {
+				background: none;
+				content: attr(data-heading);
+				left: 0;
+				top: 0;
+				position: absolute;
+				text-shadow: -1px 0 1px #c6bb9f, 0 1px 1px #c6bb9f,
+					5px 5px 10px rgba(0, 0, 0, 0.4), -5px -5px 10px rgba(0, 0, 0, 0.4);
+			}
 		</style>
 	</head>
 	<body>
-		<img src="./fondo page.png" class="my-image">
-		<img src="./Proximamente.png" class="my-image2">
+		<img src="./fondo page.png" class="my-image" />
+		<!--
+		<img src="./Proximamente.png" class="my-image2" />
+		-->
+		<h1 class="my-title">Próximamente</h1>
 		<div class="custom-container">
 			<canvas class="webgl"></canvas>
 		</div>
@@ -329,7 +388,7 @@
 		const particlesMaterial = new THREE.PointsMaterial({
 			color: parameters.materialColor,
 			sizeAttenuation: true,
-			size: 0.03,
+			size: 0.02,
 		});
 
 		const particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -459,7 +518,7 @@
 	</script>
 	<script>
 		//var target_date = new Date().getTime() + 1000 * 3600 * 48; // set the countdown date
-		var target_date = new Date("2023-06-24").getTime()
+		var target_date = new Date("2023-06-24").getTime();
 		var days, hours, minutes, seconds; // variables for time units
 
 		var countdown = document.getElementById("tiles"); // get tag element
